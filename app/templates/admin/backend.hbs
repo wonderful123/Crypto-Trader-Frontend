@@ -1,0 +1,16 @@
+<div class="col-sm-12">
+  <div class="well">
+    <div class="row">
+      <span class="block-header">Rails Backend Tools</span>
+      <form action="http://127.0.0.1:3000/update_coinmarketcap_history" onsubmit="return false">
+        <input type="submit" value="Update Coin Market Cap Data" />
+      </form>
+
+      <button {{action "testSend"}}>testSend()</button>
+    </div>
+    <hr>
+    <div class="row">
+      Job Status: {{jobStatus}}
+    </div>
+  </div>
+</div>

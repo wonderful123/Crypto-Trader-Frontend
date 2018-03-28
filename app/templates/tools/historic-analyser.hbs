@@ -1,0 +1,102 @@
+<div class="historical-analyser">
+  <div class="well">
+
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="calendar">
+          <span class="block-header">Start date:</span>
+
+          {{#power-calendar class="calendar-small"
+            maxDate=maxDate
+            center=month
+            selected=startDate
+            onSelect=(action (mut startDate) value="date")
+            onCenterChange=(action (mut month) value="date") as |calendar|}}
+            <nav class="ember-power-calendar-nav">
+              <button type="button" class="ember-power-calendar-nav-control" onclick={{action calendar.actions.moveCenter -12 'month'}}>«</button>
+              <button type="button" class="ember-power-calendar-nav-control" onclick={{action calendar.actions.moveCenter -1 'month'}}>‹</button>
+              <div class="ember-power-calendar-nav-title">
+                {{moment-format calendar.center 'MMMM YYYY'}}
+              </div>
+              <button class="ember-power-calendar-nav-control" onclick={{action calendar.actions.moveCenter 1 'month'}}>›</button>
+              <button class="ember-power-calendar-nav-control" onclick={{action calendar.actions.moveCenter 12 'month'}}>»</button>
+            </nav>
+            {{calendar.days}}
+          {{/power-calendar}}
+        </div>
+        <br>
+      </div>
+
+      <div class="col-sm-6">
+        <div class="calendar">
+          <span class="block-header">End date:</span>
+
+          {{#power-calendar class="calendar-small"
+            maxDate=maxDate
+            center=month2
+            selected=endDate
+            onSelect=(action (mut endDate) value="date")
+            onCenterChange=(action (mut month2) value="date") as |calendar|}}
+            <nav class="ember-power-calendar-nav">
+              <button type="button" class="ember-power-calendar-nav-control" onclick={{action calendar.actions.moveCenter -12 'month'}}>«</button>
+              <button type="button" class="ember-power-calendar-nav-control" onclick={{action calendar.actions.moveCenter -1 'month'}}>‹</button>
+              <div class="ember-power-calendar-nav-title">
+                {{moment-format calendar.center 'MMMM YYYY'}}
+              </div>
+              <button class="ember-power-calendar-nav-control" onclick={{action calendar.actions.moveCenter 1 'month'}}>›</button>
+              <button class="ember-power-calendar-nav-control" onclick={{action calendar.actions.moveCenter 12 'month'}}>»</button>
+            </nav>
+            {{calendar.days}}
+          {{/power-calendar}}
+        </div>
+        <br>
+      </div>
+
+    </div>
+
+    <div class="row">
+      <div class="col-sm-6">
+        <label><strong>Platform:</strong></label>
+        {{#power-select options=model.platforms selected=platform onchange=(action (mut platform)) as |platform|}}
+          {{platform}}
+        {{/power-select}}
+      </div>
+      <div class="col-sm-6">
+        <label><strong>Platform currency:</strong></label>
+        {{#power-select options=platformBaseCurrencies selected=baseCurrency onchange=(action (mut baseCurrency)) as |currency|}}
+          {{currency}}
+        {{/power-select}}
+      </div>
+    </div>
+
+    <br>
+
+    <div class="row">
+      <div class="col-sm-6">
+        <label><strong>Conversion currency:</strong></label>
+        {{#power-select options=conversionCurrencies selected=conversionCurrency onchange=(action (mut conversionCurrency)) as |currency|}}
+          {{currency}}
+        {{/power-select}}
+      </div>
+      <div class="col-sm-6">
+        <label><strong>Previous timeframe:</strong></label>
+        {{#power-select options=timeFrames selected=previousTimeframe onchange=(action (mut previousTimeframe)) as |timeFrame|}}
+          {{timeFrame.name}}
+        {{/power-select}}
+      </div>
+    </div>
+
+    <br>
+    <span class="block-header">* Use filter and sort buttons on table below</span>
+
+  </div>
+
+  {{historic-analyser-table
+    model=model
+    baseCurrency=baseCurrency
+    platform=platform
+    previousTimeframe=previousTimeframe
+    startDate=startDate
+    endDate=endDate
+  }}
+</div>

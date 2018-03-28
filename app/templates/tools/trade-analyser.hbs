@@ -1,0 +1,71 @@
+<div class="historical-analyser">
+  <div class="well">
+
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="calendar">
+          <span class="block-header">Start date:</span>
+
+          {{#power-calendar class="calendar-small"
+            maxDate=maxDate
+            center=month
+            selected=startDate
+            onSelect=(action (mut startDate) value="date")
+            onCenterChange=(action (mut month) value="date") as |calendar|}}
+            <nav class="ember-power-calendar-nav">
+              <button type="button" class="ember-power-calendar-nav-control" onclick={{action calendar.actions.moveCenter -12 'month'}}>«</button>
+              <button type="button" class="ember-power-calendar-nav-control" onclick={{action calendar.actions.moveCenter -1 'month'}}>‹</button>
+              <div class="ember-power-calendar-nav-title">
+                {{moment-format calendar.center 'MMMM YYYY'}}
+              </div>
+              <button class="ember-power-calendar-nav-control" onclick={{action calendar.actions.moveCenter 1 'month'}}>›</button>
+              <button class="ember-power-calendar-nav-control" onclick={{action calendar.actions.moveCenter 12 'month'}}>»</button>
+            </nav>
+            {{calendar.days}}
+          {{/power-calendar}}
+        </div>
+        <br>
+      </div>
+
+      <div class="col-sm-6">
+        <div class="calendar">
+          <span class="block-header">End date:</span>
+
+          {{#power-calendar class="calendar-small"
+            maxDate=maxDate
+            center=month2
+            selected=endDate
+            onSelect=(action (mut endDate) value="date")
+            onCenterChange=(action (mut month2) value="date") as |calendar|}}
+            <nav class="ember-power-calendar-nav">
+              <button type="button" class="ember-power-calendar-nav-control" onclick={{action calendar.actions.moveCenter -12 'month'}}>«</button>
+              <button type="button" class="ember-power-calendar-nav-control" onclick={{action calendar.actions.moveCenter -1 'month'}}>‹</button>
+              <div class="ember-power-calendar-nav-title">
+                {{moment-format calendar.center 'MMMM YYYY'}}
+              </div>
+              <button class="ember-power-calendar-nav-control" onclick={{action calendar.actions.moveCenter 1 'month'}}>›</button>
+              <button class="ember-power-calendar-nav-control" onclick={{action calendar.actions.moveCenter 12 'month'}}>»</button>
+            </nav>
+            {{calendar.days}}
+          {{/power-calendar}}
+        </div>
+        <br>
+      </div>
+
+    </div>
+
+    <span class="block-header">Trade analyser</span>
+
+    {{trade-analyser startDate=startDate endDate=endDate baseCurrency=baseCurrency platform=platform previousTimeframe=previousTimeframe.code}}
+
+  </div>
+
+  {{!-- {{historic-analyser-table
+    model=model
+    baseCurrency=baseCurrency
+    platform=platform
+    previousTimeframe=previousTimeframe
+    startDate=startDate
+    endDate=endDate
+  }} --}}
+</div>

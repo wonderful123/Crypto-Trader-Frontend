@@ -1,0 +1,16 @@
+<div class="row">
+  <div class="col-xs-12">
+    <div class="well">
+      <strong>Select platforms to compare:</strong>
+      <div class="row">
+        {{#each model as |platform|}}
+        <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+          <div class="checkbox" style="height: 0px">
+            <label><input type="checkbox" id="isChecked-{{platform.id}}" onchange={{action (action "checkboxChanged" platform.id) value="target.checked"}}>{{platform.name}}</label>
+          </div>
+        </div>
+        {{/each}}
+      </div>
+    </div>
+  </div>
+</div>

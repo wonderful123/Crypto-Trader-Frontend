@@ -1,0 +1,37 @@
+<div class="trade-simulator">
+  <div class="row">
+    <div class="col-sm-6">
+      <label><strong>Initial capital: </strong></label>
+      {{symbol}}{{number-input group=true groupSize=3 separator="," decimal=2 unmaskedValue=initialCapital}}
+    </div>
+    <div class="col-sm-6">
+      <label><strong>Order size (percentage):</strong></label>
+      {{input value=orderSize}}
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-6">
+      <label>Buy modules:</label>
+      {{trade-simulator/module modules=buyModules selectedModules=(mut selectedBuyModules)}}
+    </div>
+    <div class="col-sm-6">
+      <label>Sell modules:</label>
+      {{trade-simulator/module modules=sellModules selectedModules=(mut selectedSellModules)}}
+    </div>
+  </div>
+
+  {{#bs-button class="calculate-button" type="primary" onClick=(action "calculate")}}
+    {{#if trader.isCalculating}}
+      {{fa-icon "spinner" spin=true}} Calculating...
+    {{else if trader.isRequestingData}}
+      {{fa-icon "spinner" spin=true}} Requesting Data...
+    {{else}}
+      {{fa-icon "calculator"}} Calculate
+    {{/if}}
+  {{/bs-button}}
+
+  {{#if trader.holdings.holdings}}
+    {{trade-simulator/results holdings=trader.holdings symbol=symbol totalDays=trader.totalDays buySize=trader.buySize}}
+  {{/if}}
+</div>

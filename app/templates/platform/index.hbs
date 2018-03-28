@@ -1,0 +1,75 @@
+<div class="platform">
+
+    <div class="top-section">
+        <div class="row">
+            <div class="col-xs-12">
+                <h3>{{model.name}} Markets</h3>
+                <p class="pull-left">Welcome to the {{model.name}} dashboard.</p>
+                <p class="pull-right">There are {{model.markets.length}} markets active.</p>
+            </div>
+        </div>
+
+        <div class="clearfix" style="clear: both;"> <hr> </div>
+
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="well">
+              {{market-table model=model}}
+            </div>
+          </div>
+        </div>
+
+        {{!-- <div class="row">
+          <div class="metric-widgets">
+
+            <div class="col-xs-12 col-sm-6 col-lg-3">
+              {{#metric-box title="BTC-USDT Price" borderLess=false
+                bottomText=BTCUSDTWidget.bottomText boxShadow=false
+                badgeLabel="Poloniex" badgeClass="bg-blue-2"}}
+                <span class="value"><span class="glyphicon {{BTCUSDTWidget.signIcon}}" aria-hidden="true"></span> ${{format-number actioncable.BTCUSDT.last decimals=2 commas=true}}</span>
+              {{/metric-box}}
+            </div>
+            <div class="col-xs-12 col-sm-6 col-lg-3">
+              {{#metric-box title="ETH-USDT Price" borderLess=false
+                bottomText=ETHUSDTWidget.bottomText boxShadow=false
+                badgeLabel="Poloniex" badgeClass="bg-blue-2"}}
+                <span class="value"><span class="glyphicon {{ETHUSDTWidget.signIcon}}" aria-hidden="true"></span> ${{format-number actioncable.ETHUSDT.last decimals=2 commas=true}}</span>
+              {{/metric-box}}
+            </div>
+            <div class="col-xs-12 col-sm-6 col-lg-3">
+              {{#metric-box title="Biggest Gainer" borderLess=false boxShadow=false badgeLabel="7 day gain" badgeClass="bg-blue-2"}}
+                <span class="value"><span class="glyphicon glyphicon-triangle-top green" aria-hidden="true"></span> {{biggestGainer.marketName}}: {{format-number biggestGainer.change decimals=2 sign=true}}%</span>
+                <div class="bottom-text"><span class="ellipsis-text">High: {{format-number biggestGainer.high decimals=8}} Low: {{format-number biggestGainer.low decimals=8}}</span></div>
+              {{/metric-box}}
+            </div>
+            <div class="col-xs-12 col-sm-6 col-lg-3">
+              {{#metric-box title="Biggest Loser" borderLess=false boxShadow=false badgeLabel="7 day loss" badgeClass="bg-blue-2"}}
+                <span class="value"><span class="glyphicon glyphicon-triangle-bottom red" aria-hidden="true"></span> {{biggestLoser.marketName}}: {{format-number biggestLoser.change decimals=2}}%</span>
+                <div class="bottom-text"><span class="ellipsis-text">High: {{format-number biggestLoser.high decimals=8}} Low: {{format-number biggestLoser.low decimals=8}}</span></div>
+              {{/metric-box}}
+            </div>
+
+            <div class="col-xs-12 col-sm-6 col-lg-3">
+              <div class="metric-component">
+                <div class="peity-chart">{{peity-widget market=biggestGainer apiName=model.apiName}}</div>
+                <div class="metric">
+                  <h6 class="title-text">
+                    Biggest Loser
+                    <span class="badge bg-blue-2 pull-right">7 day loss</span>
+                  </h6>
+                  <span class="value"><span class="glyphicon glyphicon-triangle-bottom red" aria-hidden="true"></span> {{biggestLoser.marketName}}: {{format-number biggestLoser.change decimals=2}}%</span>
+                  <div class="bottom-text"><span class="ellipsis-text">High: {{format-number biggestLoser.high decimals=8}} Low: {{format-number biggestLoser.low decimals=8}}</span></div>
+                </div>
+              </div>
+            </div>
+
+        </div>
+      </div> --}}
+    </div>
+
+    <br />
+
+    <div class="bottom-section">
+        <br />
+    </div>
+</div>

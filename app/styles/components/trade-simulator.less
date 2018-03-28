@@ -1,0 +1,106 @@
+.trade-simulator {
+  .final-value {
+    border:2px solid;
+    padding:5px 10px;
+    white-space: nowrap;
+  }
+
+  .calculate-button {
+    margin-top: -40px;
+  }
+
+  .row {
+    margin-bottom: 15px;
+  }
+
+  input {
+    width: 85%;
+    -webkit-box-sizing: border-box;
+    /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box;
+    /* Firefox, other Gecko */
+    box-sizing: border-box;
+    /* Opera/IE 8+ */
+    font-weight: normal;
+    padding-left: 3px;
+    font-size: 13px;
+  }
+
+  .module-selection {
+
+    .options-dropdown {
+      float: right;
+      margin-right: -4px;
+      font-weight: normal;
+    }
+
+    .ember-power-select-trigger {
+      font-size: 13px;
+      font-weight: bold;
+    }
+
+    .ember-power-select-trigger-multiple-input {
+      text-indent: 5px;
+    }
+
+    .selected-modules {
+      display: flex;
+      flex-wrap: nowrap;
+
+      .panel-heading {
+        padding: 5px 10px;
+      }
+
+      .module-options {
+        width: 100%;
+        display: inline-block;
+      }
+
+      .module-relationship {
+        margin-left: 2px;
+        display: inline-block;
+
+        .panel-heading {
+          background-color: #FFE8BF;
+        }
+
+        .relation {
+          cursor: pointer;
+          text-align: center;
+          border-radius: 5px;
+          border: 1px solid #73AD21;
+          padding: 2px 5px;
+          margin: 3px;
+        }
+      }
+
+      .panel-title {
+        color: black;
+        font-size: 13px;
+
+        a {
+          text-decoration: none;
+        }
+      }
+
+      .panel-body {
+        padding: 10px 15px;
+        font-size: 13px;
+        line-height: normal;
+
+        hr {
+          margin-top: 0;
+          margin-bottom: 10px;
+        }
+
+        .options {
+          margin-left: -10px;
+
+          .ember-power-select-selected-item {
+            font-weight: normal;
+          }
+        }
+      }
+    }
+  }
+}

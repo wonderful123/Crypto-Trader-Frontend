@@ -1,0 +1,71 @@
+/* Edge cases for permutations of toolbars */
+.nonFixedBottomBar {
+    &.hideTopToolbar {
+        .app-content {
+            height: 100% !important;
+        }
+    }
+}
+.nonFixedTopBar {
+    &.hideBottomToolbar {
+        .app-content {
+            height: 100% !important;
+        }
+    }
+}
+/* Edge cases for permutations of toolbars */
+
+
+.nonFixedTopBar {
+    .top-bar {
+        position: relative !important;
+        width: calc(~'100% + @{row-margin-adjustments}');
+    }
+    .app-content {
+        margin-top: 0 !important;
+        padding-top: 0 !important;
+        height: calc(~'100% - @{bottom-bar-height}') !important;
+    }
+}
+
+.nonFixedBottomBar {
+    .bottom-bar {
+        position: relative !important;
+        margin-left: -15px;
+        width: calc(~'100% + @{row-margin-adjustments}') !important;
+    }
+    .app-content {
+        height: calc(~'100% - @{top-bar-height}') !important;
+        margin-bottom: 0 !important;
+    }
+}
+
+.nonFixedTopBar {
+    &.nonFixedBottomBar {
+        .app-content {
+            height: 100% !important;
+        }
+    }
+}
+
+.hideTopToolbar {
+    .app-content {
+        margin-top: 0 !important;
+        height: calc(~'100% - @{bottom-bar-height}') !important;
+    }
+}
+
+.hideBottomToolbar {
+    .app-content {
+        height: calc(~'100% - @{top-bar-height}') !important;
+    }
+}
+
+.hideTopToolbar {
+    &.hideBottomToolbar {
+        .app-content {
+            height: 100% !important;
+        }
+    }
+}
+

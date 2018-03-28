@@ -1,5 +1,45 @@
-{{!-- The following component displays Ember's default welcome message. --}}
-{{welcome-page}}
-{{!-- Feel free to remove this! --}}
+<div class="ember-dashboard {{if nonFixedTopBar "nonFixedTopBar"}} {{if nonFixedBottomBar "nonFixedBottomBar"}} {{if hideTopToolbar "hideTopToolbar"}} {{if hideBottomToolbar "hideBottomToolbar"}}">
 
-{{outlet}}
+    <div class="{{if showNavigationBar "option-list-visible" "option-list-hidden"}}">
+        {{option-list
+            currentPath=currentPath
+            autoHideMenu=autoHideMenu
+            nonFixedTopBar=nonFixedTopBar
+            nonFixedBottomBar=nonFixedBottomBar
+            hideTopToolbar=hideTopToolbar
+            hideBottomToolbar=hideBottomToolbar
+            hideBreadCrumbs=hideBreadCrumbs
+        }}
+    </div>
+
+    <div class="content-container {{if showNavigationBar "collapsed" "expanded"}}">
+        <div class="content-outlet">
+            <div class="app-content container-fluid {{contentClass}}">
+                <!-- #Top Bar -->
+                {{#unless hideTopToolbar}}
+                  {{top-bar toggleNavBar=(action 'toggleNavBar') logout=(action 'logout') login=(action 'login') addClass=topBarClass}}
+                {{/unless}}
+                <!-- /Top Bar -->
+
+                <!-- #BreadCrumbs -->
+                {{#unless hideBreadCrumbs}}
+                    <div class="app-breadcrumbs">
+                        <div class="row"><div class="col-xs-12">{{bread-crumbs}}</div></div>
+                    </div>
+                {{/unless}}
+                <!-- /BreadCrumbs -->
+
+                <!-- #Application Route Outlet -->
+                {{outlet}}
+                <!-- /Application Route Outlet -->
+
+                <!-- #Bottom Bar -->
+                {{#unless hideBottomToolbar}}
+                    {{bottom-bar addClass=bottomBarClass}}
+                {{/unless}}
+                <!-- /Bottom Bar -->
+            </div>
+        </div>
+    </div>
+
+</div>

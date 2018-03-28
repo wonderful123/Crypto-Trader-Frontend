@@ -1,0 +1,38 @@
+<div class="module-selection">
+  <div class="row">
+    <div class="selection">
+      {{#power-select-multiple options=modules selected=selectedModules placeholder="Select triggers" onchange=(action (mut selectedModules)) as |module|}}
+        {{module.name}}
+      {{/power-select-multiple}}
+    </div>
+  </div>
+
+  <div class="row">
+    {{#if selectedModules}}
+      {{#each selectedModules as |module|}}
+        <div class="selected-modules">
+          <div class="module-options">
+            {{#bs-accordion as |acc|}}
+              {{#acc.item value=module.name title=title type="info" onClick=(action "toggleCollapse" module) as |item|}}
+
+                {{#item.title collapsed=module.collapsedToggle}}
+                  {{fa-icon "tasks" class="icon"}} {{module.name}}<span class="options-dropdown">options {{fa-icon "angle-down" class="icon"}}</span>
+                {{/item.title}}
+
+                {{#item.body collapsed=module.collapsedToggle}}
+                  <label>Description:</label> {{module.description}}
+                  <hr> {{trade-simulator/module-options options=module.options}}
+                {{/item.body}}
+              {{/acc.item}}
+
+            {{/bs-accordion}}
+          </div>
+
+          {{trade-simulator/module-relationship relationship=(mut module.relationship)}}
+
+        </div>
+      {{/each}}
+    {{/if}}
+  </div>
+
+</div>

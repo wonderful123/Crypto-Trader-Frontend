@@ -1,0 +1,5 @@
+{{#if chartData.isPending}}
+  {{fa-icon "spinner" spin=true}} Chart Loading...
+{{else}}
+  {{ember-anychart instance=anyChart.chart afterDraw=model.afterDraw class="wide-container"}}
+{{/if}}

@@ -1,0 +1,14 @@
+<div class="options">
+  {{#each-in options as |id option|}}
+    <div class="col-lg-6">
+      <label>
+        <span class="label-text">
+          {{option.label}}
+        </span>
+        <div class="input">
+          {{component option.component options=option}}
+        </div>
+      </label>
+    </div>
+  {{/each-in}}
+</div>

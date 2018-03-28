@@ -1,0 +1,7 @@
+<button {{action "draw"}}>DRAW</button>
+
+{{x-toggle value=toggle onToggle=(action (mut toggle))}}
+
+{{#if toggle}}
+  {{ember-anychart instance=anyChart class="wide-container"}}
+{{/if}}

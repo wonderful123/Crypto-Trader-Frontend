@@ -1,0 +1,6 @@
+{{#if isUndefined}}
+  ---
+{{else}}
+  <strong class="black">Change:</strong> {{format-number value commas=true decimals=0 sign=true}}%<br>
+  <strong class="black">Largest:</strong> {{format-number maxChange commas=true decimals=0 sign=true}}%
+{{/if}}

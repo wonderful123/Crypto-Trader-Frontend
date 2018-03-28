@@ -1,0 +1,7 @@
+{{#power-select
+  options=options.options
+  selected=options.selected
+  onchange=(action (mut options.selected))
+  as |option|}}
+  {{option.name}}
+{{/power-select}}

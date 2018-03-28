@@ -1,0 +1,67 @@
+<div class="historical-multidate">
+  <div class="well">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-xs-6">
+          <div class="calendar">
+            <span class="block-header">Select dates to compare:</span>
+
+            {{#power-calendar-multiple class="calendar-small"
+              maxDate=maxDate
+              center=month
+              selected=selectedDates
+              onSelect=(action (mut selectedDates) value="date")
+              onCenterChange=(action (mut month) value="date") as |calendar|}}
+              <nav class="ember-power-calendar-nav">
+                <button type="button" class="ember-power-calendar-nav-control" onclick={{action calendar.actions.moveCenter -12 'month'}}>«</button>
+                <button type="button" class="ember-power-calendar-nav-control" onclick={{action calendar.actions.moveCenter -1 'month'}}>‹</button>
+                <div class="ember-power-calendar-nav-title">
+                  {{moment-format calendar.center 'MMMM YYYY'}}
+                </div>
+                <button class="ember-power-calendar-nav-control" onclick={{action calendar.actions.moveCenter 1 'month'}}>›</button>
+                <button class="ember-power-calendar-nav-control" onclick={{action calendar.actions.moveCenter 12 'month'}}>»</button>
+              </nav>
+              {{calendar.days}}
+            {{/power-calendar-multiple}}
+          </div>
+          <br>
+        </div>
+        <div class="col-xs-6">
+          <div class="selected-dates">
+            <span class="block-header">Selected dates: <button class="pull-right black" {{action 'clearDates'}}>Clear dates</button></span>
+            {{#each datesShortForm as |date|}}
+              <small>{{date}}</small><br>
+            {{/each}}
+          </div>
+        </div>
+        <br>
+      </div>
+
+
+      <div class="col-xs-6">
+        <label><strong>Platform:</strong></label>
+        {{#power-select options=model.platforms selected=platform onchange=(action (mut platform)) as |platform|}}
+          {{platform}}
+        {{/power-select}}
+      </div>
+      <div class="col-xs-6">
+        <label><strong>Base currency:</strong></label>
+        {{#power-select options=model.currencies selected=baseCurrency onchange=(action (mut baseCurrency)) as |currency|}}
+          {{currency}}
+        {{/power-select}}
+      </div>
+
+
+      <div class="row">
+        <div class="col-xs-12">
+          <label><strong>Calculation:</strong></label>
+          {{#power-select-multiple options=calculationTypes selected=selectedCalculations onchange=(action (mut selectedCalculations)) as |calculation|}}
+            {{calculation}}
+          {{/power-select-multiple}}
+        </div>
+      </div>
+
+    </div>
+  </div>
+  {{historic-multidate-table model=model baseCurrency=baseCurrency platform=platform dates=sortedDates calculations=selectedCalculations}}
+</div>

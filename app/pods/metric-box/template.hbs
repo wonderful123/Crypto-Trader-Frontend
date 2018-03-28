@@ -1,0 +1,25 @@
+<div class="metric {{if isLarge "large-value"}}">
+    {{#if title}}
+        <h6 class="title-text">
+            {{title}}
+            <span class="badge {{badgeClass}} pull-right">{{badgeLabel}}</span>
+        </h6>
+    {{/if}}
+
+    {{#if value}}
+        <span class="value ellipsis-text">{{value}}</span>
+    {{/if}}
+
+    {{yield}}
+
+    {{#if showProgressBar}}
+        {{#bs-progress classNames="metric-progress"}}
+            {{bs-progress-bar value=progressValue minValue=minValue maxValue=maxValue showLabel=showProgressLabelComputed type=type animate=animate striped=striped}}
+        {{/bs-progress}}
+    {{/if}}
+
+    {{#if bottomText}}
+        <div class="bottom-text"><span class="ellipsis-text">{{bottomText}}</span></div>
+    {{/if}}
+
+</div>

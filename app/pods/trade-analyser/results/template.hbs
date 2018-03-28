@@ -1,0 +1,68 @@
+<br>
+<div class="well">
+  <span class="block-header">Results</span>
+
+  <div class="row">
+    <div class="col-sm-3">
+      <span class="final-value"><strong>Final value:</strong> {{symbol}}{{format-number totalValue decimals=2 commas=true}}</span>
+    </div>
+    <div class="col-sm-3 align-left">
+      <strong>Total days:</strong> {{totalDays}}<br>
+      <strong>Remaining capital</strong> {{symbol}}{{format-number holdings.remainingCapital decimals=2 commas=true}}
+    </div>
+    <div class="col-sm-3">
+      <strong>Number of trades:</strong> {{holdings.tradeHistory.numberOfTrades}}<br>
+      <strong>Trade buys:</strong> {{symbol}}{{format-number holdings.tradeHistory.totalPurchased decimals=2 commas=true}}
+    </div>
+    <div class="col-sm-3">
+      <strong>Profit from trades:</strong> {{symbol}}{{format-number holdings.tradeHistory.totalProfit decimals=2 commas=true}}<br>
+      <strong>Holdings:</strong> {{symbol}}{{format-number holdings.value decimals=2 commas=true}}
+    </div>
+  </div>
+
+  <hr>
+  <span class="block-header">Holdings</span>
+  <div class="market-table">
+    {{#models-table
+      columnsAreUpdateable=true
+      data=holdings.holdings
+      columns=holdingsColumns
+      pageSize=pageSize
+      multipleColumnsSorting=false
+      filteringIgnoreCase=true
+      showTableFooter=false
+      useNumericPagination=false
+      useFilteringByColumns=false
+      showPageSize=showPageSize
+      customMessages=customMessages
+      showColumnsDropdown=false
+      as |mt| }}
+      {{mt.global-filter}}
+      {{mt.table}}
+      {{mt.footer}}
+    {{/models-table}}
+  </div>
+
+  <hr>
+  <span class="block-header">Completed trades</span>
+  <div class="market-table">
+    {{#models-table
+      columnsAreUpdateable=true
+      data=holdings.tradeHistory.trades
+      columns=tradeHistoryColumns
+      pageSize=pageSize
+      multipleColumnsSorting=false
+      filteringIgnoreCase=true
+      showTableFooter=false
+      useNumericPagination=false
+      useFilteringByColumns=false
+      showPageSize=showPageSize
+      customMessages=customMessages
+      showColumnsDropdown=false
+      as |mt| }}
+      {{mt.global-filter}}
+      {{mt.table}}
+      {{mt.footer}}
+    {{/models-table}}
+  </div>
+</div>

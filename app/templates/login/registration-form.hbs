@@ -1,0 +1,27 @@
+<div class="row">
+    <div class="col-sm-2">
+    </div>
+
+    <div class="col-sm-8">
+      <div class="panel panel-default login-form">
+        <div class="panel-heading">
+          <h3 class="panel-title">Registration Form</h3>
+        </div>
+        <div class="panel-body">
+            {{#bs-form formLayout="horizontal" model=model action="register" errorMessage=errorMessage}}
+              {{bs-form-element controlType="text" label="First Name" placeholder="First Name" property="firstName"}}
+              {{bs-form-element controlType="text" label="Last Name" placeholder="Last Name" property="lastName"}}
+              {{bs-form-element controlType="email" label="Email" placeholder="Email" property="email"}}
+              {{bs-form-element controlType="password" label="Password" placeholder="Password" property="password"}}
+              {{bs-form-element controlType="password" label="Confirm Password" placeholder="Confirm Password" property="passwordConfirmation"}}
+              <div class="pull-right">
+                {{bs-button defaultText="Register" type="primary" buttonType="submit"}}
+              </div>
+            {{/bs-form}}
+            {{#if errorMessage}}
+              {{errorMessage.errors}}
+            {{/if}}
+        </div>
+      </div>
+    </div>
+</div>

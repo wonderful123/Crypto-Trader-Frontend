@@ -1,0 +1,102 @@
+<div class="top-bar {{addClass}}">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-xs-3">
+        <div class="search">
+          {{#bs-button type="primary" icon="glyphicon glyphicon-align-justify" onClick=(action "toggleNavBar") classNames="btn-sm toggle-menu-button" }}
+            {{menuText}}
+          {{/bs-button}}
+          <input placeholder="Search..." class="pull-right search-bar">
+        </div>
+      </div>
+      <div class="col-xs-9 options">
+        {{#if session.isAuthenticated}}
+          {{bs-button classNames="btn-sm pull-right logout-button" text="Logout" onClick=(action "logout")}}
+        {{else}}
+          {{bs-button classNames="btn-sm pull-right login-button" text="Login" onClick=(action "login")}}
+        {{/if}}
+
+        <span class="top-bar-item pull-right">
+        {{#bs-dropdown as |dd|}}
+          {{#dd.toggle class="icon-button" data-toggle=""}}
+          <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
+          <span class="badge">13</span>
+          {{/dd.toggle}}
+
+        {{#dd.menu class="pull-right message-dropdown" as |ddm|}}
+          {{#ddm.item}}
+            {{#ddm.link-to "index"}}
+              <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> Inbox
+              <span class="annotation">You have 7 unread messages</span>
+            {{/ddm.link-to}}
+          {{/ddm.item}}
+          {{#ddm.item}}
+            {{#ddm.link-to "index"}}
+              {{fa-icon "bitcoin"}} Bittrex BTC Price
+              <span class="annotation">BTC Price</span>
+            {{/ddm.link-to}}
+          {{/ddm.item}}
+          {{#ddm.item}}
+            {{#ddm.link-to "index"}}
+              <span class="glyphicon glyphicon-bell" aria-hidden="true"></span> Alerts
+              <span class="annotation">You have 4 notifications</span>
+            {{/ddm.link-to}}
+          {{/ddm.item}}
+        {{/dd.menu}}
+
+        {{/bs-dropdown}}
+        </span>
+
+        <span class="top-bar-item pull-right">
+
+                    {{#bs-dropdown as |dd|}}
+                        {{#dd.toggle class="icon-button" data-toggle=""}}
+                            <span class="glyphicon glyphicon-bell" aria-hidden="true"></span>
+        <span class="badge info">7</span>
+        {{/dd.toggle}}
+
+        {{#dd.menu class="pull-right alert-dropdown" as |ddm|}}
+          <li>
+            {{#ddm.link-to "index"}}
+              <div>
+                <img src="/images/people/woman-3.jpg" class="user-photo" /> You logged in at 02:23 PM PST
+              </div>
+            {{/ddm.link-to}}
+          </li>
+          <li>
+            {{#ddm.link-to "index"}}
+              <div>
+                <img src="/images/people/woman-1.jpg" class="user-photo" /> You logged in at 07:23 PM PST
+              </div>
+            {{/ddm.link-to}}
+          </li>
+          <li>
+            {{#ddm.link-to "index"}}
+              <div>
+                <img src="/images/people/woman-2.jpg" class="user-photo" /> You logged in at 08:14 PM PST
+              </div>
+            {{/ddm.link-to}}
+          </li>
+          <li class="view-all">
+            {{#ddm.link-to "index"}}
+              <div>
+                Read all notifications
+              </div>
+            {{/ddm.link-to}}
+          </li>
+        {{/dd.menu}}
+
+        {{/bs-dropdown}}
+        </span>
+
+        <span class="top-bar-item pull-right">
+                  <strong>&nbsp;BTC</strong> ${{format-number actioncable.BTCUSDT.last decimals=0}}
+                </span>
+        <span class="top-bar-item pull-right">
+                  <strong>ETH</strong> ${{format-number actioncable.ETHUSDT.last decimals=0}}
+                </span>
+
+      </div>
+    </div>
+  </div>
+</div>

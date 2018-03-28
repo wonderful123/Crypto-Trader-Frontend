@@ -1,0 +1,9 @@
+{{#if isPending}}
+  {{fa-icon "spinner" spin=true}}
+{{else if isDefined}}
+  <strong>Price</strong>: {{format-number value decimals=8}}<br>
+  <strong>Percentile</strong>: {{format-number percentile decimals=0}}%<br>
+  <strong>Market cap</strong>: ${{format-number marketCap decimals=0 commas=true}}<br>
+{{else}}
+  <div class="lightgrey">---</div>
+{{/if}}

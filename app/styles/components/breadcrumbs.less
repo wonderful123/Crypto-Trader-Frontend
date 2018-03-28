@@ -1,0 +1,21 @@
+.breadcrumb {
+    border: 1px solid #ddd;
+}
+
+.listBreadcrumbs {
+    ul.breadcrumb {
+        list-style: initial;
+        list-style-type: dot;
+        background-color: transparent;
+        border: 0px solid;
+
+        li {
+            display: list-item;
+        }
+
+        li+li:before {
+            padding: 0 0 0 0;
+            content: normal;
+        }
+    }
+}

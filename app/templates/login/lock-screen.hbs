@@ -1,0 +1,24 @@
+<div class="row">
+    <div class="col-sm-2">
+    </div>
+
+    <div class="col-sm-8">
+      <div class="panel panel-default login-form">
+        <div class="panel-heading">
+          <h3 class="panel-title">Screen Locked</h3>
+        </div>
+        <div class="panel-body">
+            {{#bs-form formLayout="horizontal" model=this action="unlock"}}
+              {{bs-form-element controlType="password" label="Password" placeholder="Enter your password to unlock" property="password"}}
+              <div class="pull-right">
+                {{bs-button defaultText="Unlock" type="primary" buttonType="submit"}}
+              </div>
+            {{/bs-form}}
+
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-2">
+    </div>
+</div>

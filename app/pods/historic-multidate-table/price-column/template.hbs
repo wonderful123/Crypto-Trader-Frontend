@@ -1,0 +1,7 @@
+{{#if isPending}}
+  {{fa-icon "spinner" spin=true}}
+{{else if isDefined}}
+  {{format-number value decimals=8}}
+{{else}}
+  <div class="lightgrey">---</div>
+{{/if}}

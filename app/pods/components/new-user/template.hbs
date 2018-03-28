@@ -1,0 +1,21 @@
+<span class="block-header">Add New User</span>
+{{#bs-form invalid="invalid" formLayout=formLayout}}
+  {{#bs-form-group}}
+      <div class="col-sm-6">
+        {{bs-form-element controlType="text" value=newUser.firstName label="First Name" placeholder="First Name" showValidation=showValidation}}
+        {{bs-form-element controlType="text" value=newUser.lastName label="Last Name" placeholder="Last Name" showValidation=showValidation}}
+        {{bs-form-element controlType="text" value=newUser.email label="Email" placeholder="Email" showValidation=showValidation}}
+        {{bs-form-element controlType="text" value=newUser.password label="Password" placeholder="8+ characters" showValidation=showValidation}}
+        <div class="ui input">
+            <button type="button" class="btn btn-primary" onclick={{action "createUser" newUser}}>Add User</button>
+            {{bs-button defaultText="Clear" type="" buttonType="button" onClick=(action "clear")}}
+        </div>
+      </div>
+      <div class="errors">
+      {{#each model.errors.name as |error|}}
+        {{error.message}}
+      {{/each}}
+      </div>
+
+  {{/bs-form-group}}
+{{/bs-form}}

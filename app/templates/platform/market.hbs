@@ -1,0 +1,37 @@
+<div class="market">
+  <div class="top-section">
+    <div class="row">
+      <div class="col-xs-4">
+        <h3>{{model.market.marketCurrencyName}} <small>{{model.market.marketName}}</small></h3>
+      </div>
+      <div class="col-xs-8" style="text-align:right; font-size:13px;">
+        <strong>Last Price:</strong> {{format-number model.market.last decimals=8}}<br>
+        <strong>24hr Change:</strong> <span style={{changeColor}}>{{format-number model.market.change decimals=2 sign=true}}%</span><br>
+        <strong>High:</strong> {{format-number model.market.high decimals=8}}
+        <strong>Low:</strong> {{format-number model.market.low decimals=8}}
+      </div>
+    </div>
+  </div>
+
+  <div class="clearfix" style="clear: both;"> <hr> </div>
+
+  <div class="row">
+    <div class="col-xs-9">
+      {{price-chart model=model}}
+    </div>
+    <div class="col-xs-3">
+      <div class="market-table-small" id="scrollbar">
+        {{market-table model=model.platform tableColumns=marketTableColumns pageSize=500 showPageSize=false showComponentFooter=false}}
+      </div>
+    </div>
+  </div>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-xs-12">
+
+      <hr>
+    </div>
+  </div>
+</div>
+
+</div>

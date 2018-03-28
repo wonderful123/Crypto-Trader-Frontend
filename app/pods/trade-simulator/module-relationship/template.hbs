@@ -1,0 +1,18 @@
+<div class="module-relationship">
+  {{#bs-accordion as |acc|}}
+    {{#acc.item value=module.name title=selected type="info" onClick=(action "toggleCollapse") as |item|}}
+
+      {{#item.title collapsed=collapsedToggle}}
+        {{relationship}}
+      {{/item.title}}
+
+      {{#item.body collapsed=collapsedToggle}}
+        {{#each relationshipList as |relation|}}
+          <div class="relation" onClick={{action "changeRelation" relation}}>
+            {{relation}}<br>
+          </div>
+        {{/each}}
+      {{/item.body}}
+    {{/acc.item}}
+ {{/bs-accordion}}
+</div>

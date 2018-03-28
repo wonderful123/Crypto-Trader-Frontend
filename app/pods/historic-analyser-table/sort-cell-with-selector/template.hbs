@@ -1,0 +1,19 @@
+{{column.title}}
+<span style="float: right">
+{{#if column.useSorting}}
+  <i class="{{if column.sortAsc themeInstance.sort-asc}} {{if column.sortDesc themeInstance.sort-desc}}"></i>
+{{/if}}
+</span>
+
+<span class="sort-dropdown">
+  {{#bs-dropdown direction="up" as |dd|}}
+    {{#dd.button classNames="sort-dropdown-icon-button"}}<i class="fa fa-bars sort-dropdown-icon" aria-hidden="true"></i>{{/dd.button}}
+    {{#dd.menu as |ddm|}}
+      <span class="small">Sort by:</span>
+      {{ddm.divider}}
+      <div {{action "setSortBy" "marketCap"}}>{{#ddm.item}}Market cap {{#if selectionIsMarketCap}}<i class="fa fa-check" aria-hidden="true"></i>{{/if}}{{/ddm.item}}</div>
+      <div {{action "setSortBy" "percentile"}}>{{#ddm.item}}Percentile {{#if selectionIsPercentile}}<i class="fa fa-check" aria-hidden="true"></i>{{/if}}{{/ddm.item}}</div>
+      <div {{action "setSortBy" "close"}}>{{#ddm.item}}Price {{#if selectionIsPrice}}<i class="fa fa-check" aria-hidden="true"></i>{{/if}}{{/ddm.item}}</div>
+    {{/dd.menu}}
+  {{/bs-dropdown}}
+</span>

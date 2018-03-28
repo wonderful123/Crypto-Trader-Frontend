@@ -1,0 +1,108 @@
+<div class="option-list-navigation">
+  <div class="pull-left logged-user-panel">
+    <div class="pull-left">
+      <img src="/images/people/woman-2.jpg" class="user-photo" />
+    </div>
+    <div class="pull-left user-info">
+      <span class="light-text-1 bold">Trading App</span>
+      <br/>
+      <span class="sub-text-2 light-text-2">
+                <a href="#"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> User</a>
+      </span>
+    </div>
+  </div>
+  <div class="clearfix options">
+
+    {{#bs-accordion selected=selectedMenu as |acc|}}
+      {{#acc.item value="platforms" title="Platforms" classNames="item" }}
+        <ul>
+          {{#link-to 'platforms'}}{{fa-icon "list-alt"}} All Platforms{{/link-to}}
+          {{#each platformsSubmenu.platforms as |platform|}}
+            <li>
+              {{#link-to 'platform' platform}}{{fa-icon "list-alt"}} {{platform.name}}{{/link-to}}
+            </li>
+          {{/each}}
+        </ul>
+      {{/acc.item}}
+      {{#acc.item value="tools" title="Tools" classNames="item" }}
+        <ul>
+          <li>
+            {{#link-to "tools.platform-spread"}}{{fa-icon "cubes"}} Platform Spread{{/link-to}}
+          </li>
+          <li>
+            {{#link-to "tools.historic-analyser"}}{{fa-icon "line-chart"}} Historic Analyser{{/link-to}}
+          </li>
+          <li>
+            {{#link-to "tools.trade-simulator"}}{{fa-icon "calculator"}} Trade Simulator{{/link-to}}
+          </li>
+          <li>
+            {{#link-to "tools.trade-analyser"}}{{fa-icon "bar-chart"}} Trade Analyser{{/link-to}}
+          </li>
+          {{!-- <li>{{#link-to "tools.historic-multidate"}}{{fa-icon "calendar"}} Historic Multidate{{/link-to}}</li> --}}
+        </ul>
+      {{/acc.item}}
+      {{#acc.item value="admin" title="Admin" classNames="item" }}
+        <ul>
+          <li>
+            {{#link-to "admin.backend"}}{{fa-icon "code-fork"}} Backend{{/link-to}}
+          </li>
+          <li>
+            {{#link-to "admin.platforms"}}{{fa-icon "cubes"}} Platforms{{/link-to}}
+          </li>
+          <li>
+            {{#link-to "admin.users"}}{{fa-icon "users"}} Users{{/link-to}}
+          </li>
+          <li>
+            {{#link-to "admin.platforms"}}{{fa-icon "cogs"}} Bots{{/link-to}}
+          </li>
+        </ul>
+      {{/acc.item}}
+
+      {{#acc.item value="login" title="Login" classNames="item" }}
+        <ul>
+          {{!-- <li>
+            {{#link-to "login.login-form"}}<span class="glyphicon glyphicon-log-in" aria-hidden="true"></span> Login Form{{/link-to}}
+          </li>
+          <li>
+            {{#link-to "login.registration-form"}}<span class="glyphicon glyphicon-user" aria-hidden="true"></span> Registration{{/link-to}}
+          </li>
+          <li>
+            {{#link-to "login.password-recovery"}}<span class="glyphicon glyphicon-sunglasses" aria-hidden="true"></span> Password Recovery{{/link-to}}
+          </li>
+          <li>
+            {{#link-to "login.lock-screen"}}<span class="glyphicon glyphicon-lock" aria-hidden="true"></span> Lock Screen{{/link-to}}
+          </li> --}}
+        </ul>
+      {{/acc.item}}
+
+      {{#acc.item value="theme-options" title="Theme Options" classNames="item" }}
+        <ul>
+          <li class="theme-option">
+            <a>Auto hide/show menu </a>
+            <span>{{x-toggle size='small' theme='light' value=autoHideMenu onToggle=(action (mut autoHideMenu))}}</span>
+          </li>
+          <li class="theme-option">
+            <a>Non fixed Top Bar </a>
+            <span>{{x-toggle size='small' theme='light' value=nonFixedTopBar onToggle=(action (mut nonFixedTopBar))}}</span>
+          </li>
+          <li class="theme-option">
+            <a>Non fixed Bottom Bar </a>
+            <span>{{x-toggle size='small' theme='light' value=nonFixedBottomBar onToggle=(action (mut nonFixedBottomBar))}}</span>
+          </li>
+          <li class="theme-option">
+            <a>Hide Top Bar </a>
+            <span>{{x-toggle size='small' theme='light' value=hideTopToolbar onToggle=(action (mut hideTopToolbar))}}</span>
+          </li>
+          <li class="theme-option">
+            <a>Hide Bottom Bar </a>
+            <span>{{x-toggle size='small' theme='light' value=hideBottomToolbar onToggle=(action (mut hideBottomToolbar))}}</span>
+          </li>
+          <li class="theme-option">
+            <a>Hide Bread Crumbs </a>
+            <span>{{x-toggle size='small' theme='light' value=hideBreadCrumbs onToggle=(action (mut hideBreadCrumbs))}}</span>
+          </li>
+        </ul>
+      {{/acc.item}}
+    {{/bs-accordion}}
+  </div>
+</div>

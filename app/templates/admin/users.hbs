@@ -1,0 +1,50 @@
+  <div class="col-sm-12">
+    <div class="well">
+      <div class="row">
+        {{new-user newUser=model createUser=(action 'createUser')}}
+        <div class="col-xs-12 col-sm-12 col-lg-5">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title">Users</h3>
+            </div>
+            <br>
+            <div class="panels">
+              <div class="panel-body">
+                <table class="table table-hover users">
+                  <thead>
+                    <tr>
+                      <th>Id</th>
+                      <th>First Name</th>
+                      <th>Last Name</th>
+                      <th>Email</th>
+                      <th>Password</th>
+                      {{!-- <th>Last Login</th>
+                      <th>Logins</th> --}}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {{#each model as |user|}}
+                      <tr>
+                        <td><span class="badge bg-green-0">{{user.id}}</span></td>
+                        <td><nobr>{{user.firstName}}</nobr></td>
+                        <td><nobr>{{user.lastName}}</nobr></td>
+                        <td><nobr>{{user.email}}</nobr></td>
+                        <td><nobr>{{user.password}}</nobr></td>
+                        {{!-- <td><nobr>{{user.signInCount}}</nobr></td>
+                        <td><nobr>{{user.lastSignInAt}}</nobr></td> --}}
+                        <td><span {{action 'delete' user bubbles=false}} class="badge bg-red-0">{{fa-icon "trash-o" title="Delete user"}}</span></td>
+                      </tr>
+                    {{else}}
+                      <tr>
+                        <td><nobr>No users found</nobr></td>
+                      </tr>
+                    {{/each}}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

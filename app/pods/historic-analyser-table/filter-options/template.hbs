@@ -1,0 +1,37 @@
+<div class="filter-options">
+  {{#bs-dropdown isOpen=isOpen direction="up" closeOnMenuClick=false as |dd|}}
+    {{#dd.button classNames="icon-button"}}<i class="fa fa-sliders"></i>{{/dd.button}}
+    {{#dd.menu as |ddm|}}
+      {{#ddm.item}}
+        <datalist id="marketCapOptions">
+          {{#each marketCapOptions as |option|}}
+            <option value={{option}}>{{format-number option commas=true decimals=0}}</option>
+          {{/each}}
+        </datalist>
+
+        <span class="block-header"><small>Start Date Market Cap:</small></span>
+
+        <label class="number-input">Min:</label>
+        &gt;{{number-input group=true groupSize=3 separator="," decimal=false unmaskedValue=filterOptions.startDateMarketCapMinimum class="input-with-select" list="marketCapOptions"}}
+        <br>
+        <label class="number-input">Max:</label>
+        &lt;{{number-input group=true groupSize=3 separator="," decimal=false unmaskedValue=filterOptions.startDateMarketCapMaximum class="input-with-select" list="marketCapOptions"}}
+        <br><br>
+        <span class="block-header"><small>End Date Market Cap:</small></span>
+
+        <label class="number-input">Min:</label>
+        &gt;{{number-input group=true groupSize=3 separator="," decimal=false unmaskedValue=filterOptions.endDateMarketCapMinimum class="input-with-select" list="marketCapOptions"}}
+        <br>
+        <label class="number-input">Max:</label>
+        &lt;{{number-input group=true groupSize=3 separator="," decimal=false unmaskedValue=filterOptions.endDateMarketCapMaximum class="input-with-select" list="marketCapOptions"}}
+
+        <br>
+        <label>Hide new markets?</label> {{input class="pull-right" type="checkbox" checked=filterOptions.hideNewMarkets}}<br>
+        <br>
+
+        {{bs-button defaultText="Clear" onClick=(action "clear")}}
+        {{bs-button defaultText="Save" class="pull-right" onClick=(action "save")}}
+      {{/ddm.item}}
+    {{/dd.menu}}
+  {{/bs-dropdown}}
+</div>

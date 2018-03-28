@@ -1,0 +1,37 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="well">
+        <div class="market-table">
+          <span class="small pull-right">
+            <div style="float: left !important;">
+              {{#unless realtimeCalculationsToggled}}<button style="border-radius: 2px; float: left; margin-right: 10px;" class="small" {{action "calculate"}}>Calculate</button>{{/unless}}
+              {{x-toggle offLabel="Realtime calculation" onLabel="" showLabels=true value=realtimeCalculationsToggled theme='flat' onToggle=(action (mut realtimeCalculationsToggled))}}
+            </div>
+          </span>
+          {{#models-table
+            filterOptions=filterOptions
+            setSortBy="setSortBy"
+            columnsAreUpdateable=true
+            data=filteredData
+            columns=columns
+            pageSize=pageSize
+            multipleColumnsSorting=false
+            filteringIgnoreCase=true
+            showTableFooter=false
+            useNumericPagination=false
+            useFilteringByColumns=false
+            showPageSize=showPageSize
+            customMessages=customMessages
+            showColumnsDropdown=false
+            as |mt| }}
+            {{mt.global-filter}}
+            {{historic-analyser-table/filter-options setFilters=(action 'setFilters')}}
+            {{mt.table}}
+            {{mt.footer}}
+          {{/models-table}}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
