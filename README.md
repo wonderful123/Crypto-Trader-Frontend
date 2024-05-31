@@ -1,7 +1,16 @@
-# frontend
+# Crypto Trader Frontend
 
-This README outlines the details of collaborating on this Ember application.
-A short introduction of this app could easily go here.
+Shows aggregate crypto tickers from multiple sources.
+The rails backend facilitates storing realtime data in InfluxDB at whatever detail level is required.
+Can simulate trading strategies over past data ranges. The simulation module allows flexible strategies to be tested without recompiling the app. Javascript modules are loaded externally by the Ember app.
+These strategies could be implemented in realtime to automate trading.
+
+Example trading stategies:
+  - Buy at a certain MACD trigger, sell when price falls 5% of buy price and follow the price rise with a stop limit if profitable.
+  - Automatically trade the spread on prices between exchanges if there is profit.
+  - Detect pump and dumps and trade them automatically.
+
+All these can be simluated on past data then used for realtime trading.
 
 ## Prerequisites
 
